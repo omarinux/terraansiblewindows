@@ -1,0 +1,26 @@
+[local]
+localhost ansible_python_interpreter=/usr/local/bin/python3
+#localhost ansible_python_interpreter=/usr/local/bin/python3.10
+#localhost ansible_python_interpreter=/usr/bin/python3
+
+#aws-win-host ansible_host=34.254.66.165
+
+localhost ansible_connection=local
+
+[win]
+#aws-win-host
+
+[win:vars]
+ansible_connection=winrm
+ansible_ssh_port=5986
+ansible_user=Administrator
+ansible_password=Fhr.3g92
+ansible_winrm_transport=basic
+ansible_winrm_server_cert_validation=ignore
+
+[ansible-node]
+54.217.63.213
+
+[_windows]
+
+[_linux]

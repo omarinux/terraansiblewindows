@@ -1,0 +1,8 @@
+---
+- name: Setup Windows Server 2016
+  hosts: win
+  gather_facts: true
+  vars_files:
+    - group_vars/platform_windows.yml
+  roles:
+    - test
