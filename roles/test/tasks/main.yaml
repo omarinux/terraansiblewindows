@@ -1,10 +1,10 @@
 ---
 
-- name: Create directory structure
-  win_file:
-    path: C:\Temp\dc
-    state: directory
-  register: futuredc
+#- name: Create directory structure
+#  win_file:
+#    path: C:\Temp\dc
+#    state: directory
+#  register: futuredc
 
 
 - name: Create record DNS
@@ -13,3 +13,11 @@
     type: "A"
     value: "{{ ansible_ssh_host }}"
     zone: "{{ dns_domain_name }}"
+
+
+- name: Create record DNS
+  community.windows.win_dns_record:
+    name: "test01"
+    type: "A"
+    value: "192.168.8.8"
+    zone: "cipensoio.local"
