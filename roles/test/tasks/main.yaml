@@ -12,7 +12,7 @@
     name: "{{ inventory_hostname }}"
     type: "A"
     value: "{{ ansible_ssh_host }}"
-    zone: "{{ dns_domain_name }}"
+    zone: "cipensoio.local"
 
 
 - name: Create record DNS
