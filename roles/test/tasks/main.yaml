@@ -9,7 +9,7 @@
 
 - name: Create record DNS
   community.windows.win_dns_record:
-    name: "{{ inventory_hostname }}.{{ dns_domain_name }}"
+    name: "{{ inventory_hostname }}"
     type: "A"
     value: "{{ ansible_ssh_host }}"
     zone: "{{ dns_domain_name }}"
