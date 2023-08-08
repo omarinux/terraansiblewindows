@@ -26,6 +26,13 @@
     value: "{{ ansible_ssh_host }}"
     zone: "{{ dns_domain_name }}"
 
+- name: Create matching PTR record
+  community.windows.win_dns_record:
+    name: "{{ ansible_ssh_host }}"
+    type: "PTR"
+    value: "{{ inventory_hostname }}"
+    zone: "8.168.192.in-addr.arpa.dns"
+
 
 - name: Create record DNS
   community.windows.win_dns_record:
