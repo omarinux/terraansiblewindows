@@ -19,25 +19,21 @@
     msg: "{{ dns_domain_name }}"
 
 
-- name: Create record DNS
-  community.windows.win_dns_record:
-    name: "{{ inventory_hostname }}"
-    type: "A"
-    value: "{{ ansible_ssh_host }}"
-    zone: "{{ dns_domain_name }}"
-
-- name: Create matching PTR record
-  community.windows.win_dns_record:
-    name: "{{ ansible_ssh_host }}"
-    type: "PTR"
-    value: "{{ inventory_hostname }}"
-    zone: "8.168.192.in-addr.arpa.dns"
+- name: make static a and ptr records
+  win_shell: Add-DnsServerResourceRecord -ComputerName localhost  -ZoneName {{ dns_domain_name }} -A -Name {{ inventory_hostname }} -IPv4Address {{ ansible_ssh_host }} -CreatePtr
 
 
-- name: Create record DNS
-  community.windows.win_dns_record:
-    name: "test01"
-    type: "A"
-    value: "192.168.8.8"
-    zone: "cipensoio.local"
+#- name: Create record DNS
+#  community.windows.win_dns_record:
+#    name: "{{ inventory_hostname }}"
+#    type: "A"
+#    value: "{{ ansible_ssh_host }}"
+#    zone: "{{ dns_domain_name }}"
+
+#- name: Create matching PTR record
+#  community.windows.win_dns_record:
+#    name: "{{ ansible_ssh_host }}"
+#    type: "PTR"
+#    value: "{{ inventory_hostname }}"
+#    zone: "8.168.192.in-addr.arpa.dns"
 
